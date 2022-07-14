@@ -18,10 +18,12 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 routes(app);
+
 app.use((req, res) => {
   res.status(404).send('404 - Página não encontrada')
 });
 
-app.listen(3000, () => {
-  console.log(`Servidor rodando na porta 3000!`);
+const port = 3000
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}!`);
 });

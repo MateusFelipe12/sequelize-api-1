@@ -53,7 +53,7 @@ const persistir = async (req, res) => {
     if (!id) {
       return await create(req.body, res)
     }
-
+    
     return await update(id, req.body, res)
   } catch (error) {
     return res.status(500).send({
@@ -64,7 +64,7 @@ const persistir = async (req, res) => {
 
 const create = async (dados, res) => {
   let { nome } = dados;
-
+  
   let categoriaExistente = await Categoria.findOne({
     where: {
       nome
@@ -76,7 +76,7 @@ const create = async (dados, res) => {
       message: 'Já existe uma categoria cadastrada com esse nome'
     })
   }
-
+  
   let categoria = await Categoria.create({
     nome
   });
